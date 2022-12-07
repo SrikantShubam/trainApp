@@ -56,17 +56,7 @@ def logout(request):
 
 
 
-def train_id(request, train_id):
-    if not request.user.is_superuser:
-        return render(request, './error.html', {'msg': "Not an Admin"})
 
-    l = trains.objects.get(pk=train_id)
-    persons = l.person_set.all()
-    context = {
-        'train': l,
-        'persons': persons
-    }
-    return render(request, './viewperson.html', context)
 
 temp={}
 def book(request):
