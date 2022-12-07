@@ -1,0 +1,85 @@
+{% extends "./base.html" %}
+
+{% block content %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&family=Open+Sans&family=Poppins:ital,wght@0,600;1,100&display=swap');
+h1{
+    font-family: 'Lobster Two', cursive;
+}
+html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+thead th,
+tbody th {
+  color: #fff;
+}
+
+tbody td {
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+}
+
+.card {
+  border-radius: .5rem;
+}
+</style>
+
+<section class="intro">
+
+    <div class="bg-image h-100" style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
+        <div class="container">
+            <h1 class="text-center" style="color: white;">The Current Trains</h1>
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card bg-dark shadow-2-strong">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-dark table-borderless mb-0">
+                      <thead>
+                        <tr>
+                            <th scope="col">Train Number</th>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Seats Available</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {%for p in lis%}
+            
+                        <tr>
+                            <td class="text-center"><a href="http://127.0.0.1:8000/reservation/{{p.pk}}">{{p.pk}}</a></td>
+                            <td>{{p.train_name}}</td>
+                            <td>{{p.source}}</td>
+                            <td>{{p.destination}}</td>
+                            <td>{{p.time}}</td>
+                            <td>{{p.price}}</td>
+                            <td>{{p.seats_available}}</td>
+                        </tr>
+                        
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
